@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        /* Defined the Vinyl George font using @font-face */
+        @font-face {
+            font-family: 'Vinyl George';
+            src: url('Vinyl_George.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Applied Helvetica font to the body */
+        body {
+            font-family: Helvetica, sans-serif; /* Used Helvetica for body text */
+            font-size: 18px; /* The Default font size for body text */
+            text-align: center;
+            background-color: #adadad;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Ensured body covers full viewport height */
+            display: flex; /* Enabled flexbox layout */
+            flex-direction: column; /* Aligned children in a column */
+            justify-content: space-between; /* Spaced out children with space between */
+        }
+
+        /* Applied Vinyl George font to the h1 element */
+        h1 {
+            font-family: 'Vinyl George', sans-serif; /* Used Vinyl George for the h1 element */
+            font-size: 36px; /* For Example: 36 pixels */
+            margin: 20px 0; /* Added some margin for spacing */
+        }
+
+        /* The Main content styling */
+        .content {
+            flex-grow: 1; /* Ensured content takes up remaining space */
+        }
+
+        /* The Footer styling */
+        footer {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            font-family: Helvetica, sans-serif; /* Ensured footer uses Helvetica */
+            font-size: 14px; /* The Smaller font size for footer text */
+            text-align: center;
+        }
+
+        /* The Styling for the go-back button */
+        .go-back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .go-back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Hello World</h1>
+        <p>Welcome to my old Hello World Page! I created this page as a part of my class assignment!</p>
+		<p> This is my first Re-L Mayer cosplay photo from the 2006 Ergo Proxy anime.</p>
+
+        <img src="AndreaCarroll_ReLMayerCosplay.JPG" alt="A brunette young white woman in a black turtleneck wearing blue eyeshadow and pink lipgloss on her face looking away from the camera." style="width:300px; height:auto;">
+        
+        <p>Please come take a look at my <a href="another-page.html">other page</a>!</p>
+        
+        <!-- Go back button -->
+        <a href="indexupdated.html" class="go-back-button">Go Back to Homepage</a>
+    </div>
+
+    <footer>
+        © 2024 Created by Andrea Carroll
+    </footer>
+</body>
+</html>

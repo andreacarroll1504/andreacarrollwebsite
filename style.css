@@ -1,0 +1,81 @@
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    background-color: #adadad;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    background-color: #333;
+    color: #D3D3D3;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Vinyl George', sans-serif;
+    font-size: 36px;
+    margin: 20px 0;
+
+ /* Adds a text shadow for a subtle shadow effect */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+nav {
+    margin: 20px 0;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > li {
+    display: inline-block;
+    position: relative;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+.menu .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+}
+
+.menu .dropdown li {
+    display: block;
+}
+
+.menu li:hover .dropdown {
+    display: block;
+}
+
+.menu .dropdown a {
+    padding: 10px;
+    text-align: left;
+}
+
+footer {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}

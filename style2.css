@@ -1,0 +1,66 @@
+/* My Body styling */
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    background-color: #adadad;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* My Content container */
+.content {
+    flex-grow: 1; /* Ensures my content takes up the remaining space, pushing the footer down */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 80%;
+    width: 300px; /* Sets a fixed width for my slideshow */
+    margin: 20px auto; /* Added a margin to give space between my slideshow and the button */
+}
+
+/* My Slides styling with a smaller size */
+.mySlides {
+    display: none;
+    width: 100%;  /* Ensure my images takes up full width of the container */
+    height: auto;
+}
+
+/* Go back button styling */
+.go-back-button {
+    margin-top: 20px; /* Ensures go-back button does not overlap with slides */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.go-back-button:hover {
+    background-color: #555;
+}
+
+/* Footer styling */
+footer {
+    width: 100%; /* Ensures my footer spans the entire width of the page */
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    flex-shrink: 0; /* Prevents my footer from shrinking */
+}
