@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form with Validation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #e0f7fa, #cfd9df);
+            padding: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #009688;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00796b;
+        }
+
+        button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        .confirmation-page {
+            display: none;
+            background-color: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        small {
+            color: red;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Fill Out Your Details</h2>
+        <form id="userForm">
+            <div class="form-field">
+                <label for="name">Name (First and Last)</label>
+                <input type="text" id="name" required>
+                <small id="nameError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="address">Address</label>
+                <input type="text" id="address" required>
+                <small id="addressError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" maxlength="10" required>
+                <small id="phoneError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+                <small id="emailError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="birthdate">Birth Date</label>
+                <input type="date" id="birthdate" required>
+                <small id="birthdateError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" required></textarea>
+                <small id="messageError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="captcha">What is the last name of the current president?</label>
+                <input type="text" id="captcha" required>
+                <small id="captchaError"></small>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="confirmationPage" class="confirmation-page">
+            <h2>Confirm Your Details</h2>
+            <p id="confirmName"></p>
+            <p id="confirmAddress"></p>
+            <p id="confirmPhone"></p>
+            <p id="confirmEmail"></p>
+            <p id="confirmBirthdate"></p>
+            <p id="confirmMessage"></p>
+            <button id="confirmButton">Confirm</button>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('userForm');
+        const confirmationPage = document.getElementById('confirmationPage');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            let valid = validateForm();
+            if (valid) {
+                showConfirmation();
+            }
+        });
+
+        function validateForm() {
+            let valid = true;
+
+            // Name validation
+            const name = document.getElementById('name').value.trim();
+            if (name.split(' ').length < 2) {
+                document.getElementById('nameError').textContent = "Please enter first and last name.";
+                valid = false;
+            } else {
+                document.getElementById('nameError').textContent = "";
+            }
+
+            // Address validation
+            const address = document.getElementById('address').value.trim();
+            if (!address) {
+                document.getElementById('addressError').textContent = "Please enter a valid address.";
+                valid = false;
+            } else {
+                document.getElementById('addressError').textContent = "";
+            }
+
+            // Phone number validation
+            const phone = document.getElementById('phone').value.trim();
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById('phoneError').textContent = "Please enter a 10-digit phone number.";
+                valid = false;
+            } else {
+                document.getElementById('phoneError').textContent = "";
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = "Please enter a valid email address.";
+                valid = false;
+            } else {
+                document.getElementById('emailError').textContent = "";
+            }
+
+            // Birthdate validation
+            const birthdate = new Date(document.getElementById('birthdate').value);
+            const today = new Date();
+            if (birthdate >= today || !birthdate.getTime()) {
+                document.getElementById('birthdateError').textContent = "Please enter a valid birth date.";
+                valid = false;
+            } else {
+                document.getElementById('birthdateError').textContent = "";
+            }
+
+            // Captcha validation
+            const captcha = document.getElementById('captcha').value.trim().toLowerCase();
+            if (captcha !== "biden") {
+                document.getElementById('captchaError').textContent = "Incorrect answer for captcha.";
+                valid = false;
+            } else {
+                document.getElementById('captchaError').textContent = "";
+            }
+
+            return valid;
+        }
+
+        function showConfirmation() {
+            form.style.display = 'none';
+            confirmationPage.style.display = 'block';
+
+            document.getElementById('confirmName').textContent = "Name: " + document.getElementById('name').value;
+            document.getElementById('confirmAddress').textContent = "Address: " + document.getElementById('address').value;
+            document.getElementById('confirmPhone').textContent = "Phone: " + document.getElementById('phone').value;
+            document.getElementById('confirmEmail').textContent = "Email: " + document.getElementById('email').value;
+            document.getElementById('confirmBirthdate').textContent = "Birthdate: " + document.getElementById('birthdate').value;
+            document.getElementById('confirmMessage').textContent = "Message: " + document.getElementById('message').value;
+
+            document.getElementById('confirmButton').addEventListener('click', function() {
+                alert("Form confirmed and submitted!");
+            });
+        }
+    </script>
+</body>
+</html>
