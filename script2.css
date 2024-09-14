@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuItems = document.querySelectorAll('.menu > li');
     
-    // Dropdown hover effect for the navigation menu
+    // My Dropdown hover effect for my navigation menu
     menuItems.forEach(item => {
         item.addEventListener('mouseover', () => {
             const dropdown = item.querySelector('.dropdown');
