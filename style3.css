@@ -1,8 +1,8 @@
-/* General Layout */
+/* My General Layout */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Helvetica', sans-serif;
     background-color: #f4f4f9;
     color: #333;
 }
@@ -20,7 +20,7 @@ header h1 {
     font-size: 2rem;
 }
 
-/* Navigation Menu */
+/* My Navigation Menu */
 nav {
     margin-top: 10px;
 }
@@ -54,7 +54,7 @@ nav {
     border-radius: 5px;
 }
 
-/* Dropdown Menu */
+/* My Dropdown Menu */
 .dropdown {
     display: none;
     position: absolute;
@@ -83,7 +83,7 @@ nav {
     display: block;
 }
 
-/* Main Content */
+/* My Main Content */
 main {
     max-width: 900px;
     margin: 20px auto;
@@ -102,13 +102,13 @@ section p {
     margin-bottom: 20px;
 }
 
-/* Image Styling */
+/* My Image Styling */
 section img {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
+/* My Footer Styling */
 footer {
     text-align: center;
     padding: 10px 0;
@@ -119,7 +119,7 @@ footer {
     width: 100%;
 }
 
-/* Media Queries for Responsive Design */
+/* My Media Queries for a Responsive Design */
 @media (max-width: 768px) {
     .menu {
         flex-direction: column;
