@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exponential Growth Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"> //I used chart.js to create my graph. </script> 
+    <style>
+        #plot {
+            width: 400px;  /* I adjusted the size for visibility */
+            height: 300px; /* I adjusted this one for visibility too*/
+        } 
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: #333; /* I added a dark background for contrast */
+            color: #fff; /* I added white text coloring to make the graph line pop*/
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #555; /* I added a dark background for the buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* I added space between the buttons */
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #666;
+        }
+        .calculate-button {
+            background-color: #4CAF50; /* I added green coloring for the Calculate button */
+        }
+        .calculate-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exponential Growth Calculator</h1>
+    <form id="calculator">
+        <label for="a">a:</label>
+        <input type="number" id="a" name="a" value="1" step="0.1"><br><br>
+        <label for="b">b:</label>
+        <input type="number" id="b" name="b" value="0.1" step="0.01"><br><br>
+        <label for="xMin">x Min:</label>
+        <input type="number" id="xMin" name="xMin" value="0" step="0.1"><br><br>
+        <label for="xMax">x Max:</label>
+        <input type="number" id="xMax" name="xMax" value="10" step="0.1"><br><br>
+        <div class="button-container">
+            <input type="button" class="button calculate-button" value="Calculate" onclick="plotGraph()">
+            <a href="index.html" class="button">Go Back</a>
+        </div>
+    </form>
+    <canvas id="plot"></canvas>
+
+    <script>
+        function plotGraph() {
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const xMin = parseFloat(document.getElementById('xMin').value);
+            const xMax = parseFloat(document.getElementById('xMax').value);
+
+            const xValues = [];
+            const yValues = [];
+
+            for (let x = xMin; x <= xMax; x += 0.1) {
+                xValues.push(x);
+                yValues.push(a * Math.exp(b * x));
+            }
+
+            const ctx = document.getElementById('plot').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label: 'y = a * e^(b * x)',
+                        data: yValues,
+                        borderColor: 'rgba(255, 255, 255, 1)', /* I added White coloring */
+                        backgroundColor: 'rgba(0, 0, 0, 0)', /* I made the background transparent*/
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            ticks: {
+                                color: '#fff' // There is white coloring for x-axis ticks
+                            },
+                            grid: {
+                                color: '#444' // There is darker coloring for x-axis grid lines
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#fff' // There is white coloring for y-axis ticks
+                            },
+                            grid: {
+                                color: '#444' // There is darker coloring for y-axis grid lines
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#fff' // I added a white coloring for the legend text
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
