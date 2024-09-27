@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirograph</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: #333; /* Dark background for contrast */
+            color: #fff; /* White text coloring */
+        }
+        canvas {
+            border: 1px solid white;
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spirograph</h1>
+    <label for="R">Radius of Outer Circle (R) [10 - 200]: </label>
+    <input type="number" id="R" placeholder="Random" min="10" max="200"><br>
+    <label for="r">Radius of Inner Circle (r) [5 - 100]: </label>
+    <input type="number" id="r" placeholder="Random" min="5" max="100"><br>
+    <label for="O">Offset of Pen (O) [0 - 50]: </label>
+    <input type="number" id="O" placeholder="Random" min="0" max="50"><br><br>
+    <button onclick="startDrawing()">Start Spirograph</button>
+    <button onclick="stopDrawing()">Stop</button>
+    <button onclick="resetDrawing()">Reset</button>
+    <a href="index.html" style="display: inline-block; margin-top: 10px; text-decoration: none; color: #fff; background-color: #007BFF; padding: 10px; border-radius: 5px;">Go Back</a>
+    <canvas id="spirographCanvas" width="600" height="600"></canvas>
+    <script>
+        let animationId;
+
+        function startDrawing() {
+            const canvas = document.getElementById("spirographCanvas");
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears the drawing from the canvas
+
+            let R = parseFloat(document.getElementById("R").value);
+            let r = parseFloat(document.getElementById("r").value);
+            let O = parseFloat(document.getElementById("O").value);
+
+            // Generating random values if the fields are empty or not in range
+            if (isNaN(R) || R < 10 || R > 200) {
+                R = getRandomInt(10, 200);
+            }
+            if (isNaN(r) || r < 5 || r > 100) {
+                r = getRandomInt(5, 100);
+            }
+            if (isNaN(O) || O < 0 || O > 50) {
+                O = getRandomInt(0, 50);
+            }
+
+            ctx.translate(canvas.width / 2, canvas.height / 2); // Moves it to the center of canvas
+            ctx.strokeStyle = "#FFFFFF"; // Sets my line color to white
+            ctx.lineWidth = 2; // Sets my line thickness
+
+            let t = 0;
+            const increment = 0.05;
+
+            ctx.beginPath();
+            ctx.moveTo(getX(R, r, O, t), getY(R, r, O, t));
+
+            function draw() {
+                t += increment;
+                const x = getX(R, r, O, t);
+                const y = getY(R, r, O, t);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                if (t < 100 * Math.PI) {
+                    animationId = requestAnimationFrame(draw);
+                }
+            }
+
+            draw();
+        }
+
+        function stopDrawing() {
+            cancelAnimationFrame(animationId);
+        }
+
+        function resetDrawing() {
+            const canvas = document.getElementById("spirographCanvas");
+            const ctx = canvas.getContext("2d");
+            stopDrawing(); // Ceases any ongoing animation
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears drawing from the canvas
+            ctx.setTransform(1, 0, 0, 1, 0, 0); // Resets the transformation to try again
+            
+            // Clear input fields
+            document.getElementById("R").value = "";
+            document.getElementById("r").value = "";
+            document.getElementById("O").value = "";
+        }
+
+        function getX(R, r, O, t) {
+            return (R + r) * Math.cos(t) - (r + O) * Math.cos(((R + r) / r) * t);
+        }
+
+        function getY(R, r, O, t) {
+            return (R + r) * Math.sin(t) - (r + O) * Math.sin(((R + r) / r) * t);
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+</body>
+</html>
+
