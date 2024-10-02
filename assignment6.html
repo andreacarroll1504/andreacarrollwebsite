@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Movies</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Favorite Movies</h1>
+    <table id="movieTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Year</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            // Fetched JSON data from my external movies file
+            $.getJSON('movies.json', function(data) {
+                // Accessed the 'movies' array from JSON
+                var movieData = data.movies;
+                // Finding the table body to insert rows
+                var tableBody = $('#movieTable tbody');
+                
+                // Looped through each movie object here
+                $.each(movieData, function(index, movie) {
+                    // Made a new table row for each movie
+                    var row = `<tr>
+                        <td>${movie.title}</td>
+                        <td>${movie.director}</td>
+                        <td>${movie.year}</td>
+                        <td>${movie.rating}</td>
+                    </tr>`;
+                    // Appended the row to the table body
+                    tableBody.append(row);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+    "movies": [
+        {
+            "title": "Legend",
+            "director": "Ridley Scott",
+            "year": 1985,
+            "rating": "PG"
+        },
+        {
+            "title": "Labyrinth",
+            "director": "Jim Henson",
+            "year": 1986,
+            "rating": "PG"
+        },
+        {
+            "title": "The Craft",
+            "director": "Andrew Fleming",
+            "year": 1996,
+            "rating": "R"
+        },
+        {
+            "title": "Repo! The Genetic Opera",
+            "director": "Darren Lynn Bousman",
+            "year": 2008,
+            "rating": "R"
+        }
+    ]
+}
