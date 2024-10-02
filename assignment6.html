@@ -6,21 +6,49 @@
     <title>Favorite Movies</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: #333; /* Dark background for contrast */
+            color: #fff; /* White text coloring */
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px; /* Added some space above the table */
         }
         table, th, td {
-            border: 1px solid black;
+            border: 1px solid white; /* White border for table */
         }
         th, td {
             padding: 10px;
             text-align: left;
         }
+        th {
+            background-color: #444; /* Makes slightly lighter background for header */
+        }
+        .button {
+            background-color: #555; /* My Button background color */
+            color: white; /* My Button text color */
+            border: none; /* Removed the border */
+            padding: 10px 20px; /* Added Padding for the button */
+            text-align: center; /* Centered the text */
+            text-decoration: none; /* Removed underline */
+            display: inline-block; /* Displayed as an inline-block */
+            margin: 10px 0; /* Added Margin for spacing */
+            cursor: pointer; /* Changed the cursor to pointer on hover */
+            border-radius: 5px; /* Rounded my corners */
+        }
+        .button:hover {
+            background-color: #666; /* Darkened the button on hover */
+        }
     </style>
 </head>
 <body>
     <h1>My Favorite Movies</h1>
+    <p> My JSON Data Table displays my favorite movies by title, director, year released, and rating.</p> 
+    <!-- Go Back Button -->
+    <a href="index.html" class="button">Go Back</a>
+
     <table id="movieTable">
         <thead>
             <tr>
@@ -40,7 +68,7 @@
             $.getJSON('movies.json', function(data) {
                 // Accessed the 'movies' array from JSON
                 var movieData = data.movies;
-                // Finding the table body to insert rows
+                // Found the table body to insert rows
                 var tableBody = $('#movieTable tbody');
                 
                 // Looped through each movie object here
@@ -52,7 +80,7 @@
                         <td>${movie.year}</td>
                         <td>${movie.rating}</td>
                     </tr>`;
-                    // Appended the row to the table body
+                    // Appending the row to the table body
                     tableBody.append(row);
                 });
             });
@@ -60,3 +88,4 @@
     </script>
 </body>
 </html>
+
