@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Cards</title>
+    <style>
+	body {
+            font-family: Helvetica, sans-serif;
+            background-color: #333; /* Dark background for contrast */
+            color: #E0E5E5; /* Light Grey text coloring */
+        }
+        #deck {
+            margin-top: 20px;
+        }
+        .card {
+            width: 100px;
+            height: 150px;
+            margin: 10px;
+            display: inline-block;
+            cursor: grab;
+        }
+        #discardPile {
+            width: 150px;
+            height: 200px;
+            border: 2px dashed #000;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .highlight {
+            background-color: orange;
+        }
+		.button {
+            background-color: #A00000; /* My Button background color */
+            color: white; /* My Button text color */
+            border: none; /* Removed the border */
+            padding: 10px 20px; /* Added Padding for the button */
+            text-align: center; /* Centered the text */
+            text-decoration: none; /* Removed underline */
+            display: inline-block; /* Displayed as an inline-block */
+            margin: 10px 0; /* Added Margin for spacing */
+            cursor: pointer; /* Changed the cursor to pointer on hover */
+            border-radius: 5px; /* Rounded my corners */
+        }
+        .button:hover {
+            background-color: #580000; /* Darkened the button on hover */
+			
+		
+		
+    </style>
+</head>
+<body>
+    <h1>Card Drag & Drop Game!</h1>
+	<p>Come drag and drop any card into the pile!</p>
+    <button onclick="dealCards()">Deal Cards</button>
+
+    <div id="deck"></div>
+
+    <div id="discardPile" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Discard Pile
+    </div>
+
+    <script>
+        const deck = document.getElementById('deck');
+        const discardPile = document.getElementById('discardPile');
+        let dealtCards = [];
+
+        // My Card Images 
+        const cards = [
+            'S1.png', 'S2.png', 'S3.png', 'S4.png', 'S5.png', 
+            'S6.png', 'S7.png', 'S8.png', 'S9.png', 'S10.png', 
+            'S11.png', 'S12.png', 'S13.png', 'C1.png', 'C2.png', 
+			'C3.png', 'C4.png', 'C5.png', 'C6.png', 'C7.png', 
+			'C8.png', 'C9.png', 'C10.png', 'C11.png', 'C12.png', 
+			'C13.png', 'H1.png', 'H2.png', 'H3.png', 'H4.png', 
+			'H5.png', 'H6.png', 'H7.png', 'H8.png', 'H9.png', 
+			'H10.png', 'H11.png', 'H12.png', 'H13.png', 'D1.png', 
+			'D2.png', 'D3.png', 'D4.png', 'D5.png', 'D6.png', 
+			'D7.png', 'D8.png', 'D9.png', 'D10.png', 'D11.png',
+			'D12.png', 'D13.png'
+			
+        ];
+
+        // Deals the cards, ensures no duplicates
+        function dealCards() {
+            deck.innerHTML = ''; // Clears the previous cards
+            dealtCards = []; // Resets the dealt cards
+
+            while (dealtCards.length < 5) {  // Deal 5 cards
+                let cardIndex = Math.floor(Math.random() * cards.length);
+                let card = cards[cardIndex];
+                
+                if (!dealtCards.includes(card)) {
+                    dealtCards.push(card);
+                    let cardElement = document.createElement('img');
+                    cardElement.src = 'C:/Users/akc12/Documents/index/PNG-cards-1.3/PNG-cards-1.3/' + card; //Path to my card images
+                    cardElement.classList.add('card');
+                    cardElement.draggable = true;
+                    cardElement.ondragstart = drag;
+                    deck.appendChild(cardElement);
+                }
+            }
+        }
+
+        // Allows the dropping
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        // Drags the card
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.src);
+        }
+
+        // Drops the card into the discard pile
+        function drop(ev) {
+            ev.preventDefault();
+            let cardSrc = ev.dataTransfer.getData("text");
+            discardPile.classList.add('highlight'); // This highlights the discard pile
+            discardPile.innerHTML = "Card Discarded!"; // This changes the text to show the card discarded
+
+            // Optionally, this removes the card from the deck after it has been discarded
+            let cardElements = document.querySelectorAll('#deck img');
+            cardElements.forEach(card => {
+                if (card.src === cardSrc) {
+                    card.remove(); // Removes the card from the deck
+                }
+            });
+
+            setTimeout(() => {
+                discardPile.classList.remove('highlight');
+                discardPile.innerHTML = "Discard Pile"; // Resets the text
+            }, 1000);
+        }
+    </script>
+<!-- Go Back Button -->
+    <a href="index.html" class="button">Go Back</a>
+</body>
+</html>
