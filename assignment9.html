@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouncing Side-Eye Cat Animation</title>
+  <style>
+  body {
+            font-family: Helvetica, sans-serif;
+            background-color: #333; /* Dark background for contrast */
+            color: #fff; /* White text coloring */
+    canvas { border: 1px solid white; }
+	.button {
+            background-color: #FF5733; /* My Button background color */
+            color: white; /* My Button text color */
+            border: none; /* Removed the border */
+            padding: 10px 20px; /* Added Padding for the button */
+            text-align: center; /* Centered the text */
+            text-decoration: none; /* Removed underline */
+            display: inline-block; /* Displayed as an inline-block */
+            margin: 10px 0; /* Added Margin for spacing */
+            cursor: pointer; /* Changed the cursor to pointer on hover */
+            border-radius: 5px; /* Rounded my corners */
+			position: absolute; /*Changed Button position*/
+			left: 0;
+			bottom: 0;
+        }
+        .button:hover {
+            background-color: #C63E21; /* Darkened the button on hover */
+  </style>
+</head>
+<body>
+<h1>Bouncing Side-Eye Cat Animation</h1>
+<p><i>I found this meme on TikTok! I do not own it!</i></p>
+<p>Click inside the box to change the object's direction!</p>
+<canvas id="canvas" width="500" height="400"></canvas>
+
+<script>
+  // Sets up the canvas and context
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Creates new Image object for PNG
+  const img = new Image();
+  img.src = '"C:/Users/akc12/Documents/index/CatMeme.PNG"';  // Replaced with path to my PNG file
+
+  // My Object properties
+  let object = {
+    x: 50,
+    y: 50,
+    width: 50,    // Sets desired width of image
+    height: 50,   // Sets desired height of image
+    dx: 3,        // Speeds in x direction
+    dy: 3         // Speeds in y direction
+  };
+
+  // Draws PNG image on canvas
+  function drawImage() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears the canvas
+    ctx.drawImage(img, object.x, object.y, object.width, object.height);
+  }
+
+  // Updating object position and checking for boundaries
+  function updatePosition() {
+    object.x += object.dx;
+    object.y += object.dy;
+
+    // Checking for collision with canvas edges and reverse direction
+    if (object.x + object.width > canvas.width || object.x < 0) object.dx *= -1;
+    if (object.y + object.height > canvas.height || object.y < 0) object.dy *= -1;
+  }
+
+  // Changing direction on click
+  canvas.addEventListener('click', (e) => {
+    const imgLeft = object.x;
+    const imgRight = object.x + object.width;
+    const imgTop = object.y;
+    const imgBottom = object.y + object.height;
+
+    //Mouse position
+    const mouseX = e.clientX - canvas.getBoundingClientRect().left;
+    const mouseY = e.clientY - canvas.getBoundingClientRect().top;
+
+    //Click inside image bounds
+    if (mouseX >= imgLeft && mouseX <= imgRight && mouseY >= imgTop && mouseY <= imgBottom) {
+      // Changing direction to new random angle
+      object.dx = Math.floor(Math.random() * 5 + 2) * (Math.random() < 0.5 ? 1 : -1);
+      object.dy = Math.floor(Math.random() * 5 + 2) * (Math.random() < 0.5 ? 1 : -1);
+    }
+  });
+
+  // My loop animation
+  function animate() {
+    drawImage();
+    updatePosition();
+    requestAnimationFrame(animate); // Continues the animation
+  }
+
+  // Starting animation with loaded image 
+  img.onload = () => {
+    animate();
+  };
+</script>
+<!-- Go Back Button -->
+    <a href="index.html" class="button">Go Back</a>
+</body>
+</html>
