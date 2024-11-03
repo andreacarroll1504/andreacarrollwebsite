@@ -1,70 +1,151 @@
-/* Mobile-specific styling */
-@media only screen and (max-width: 768px) {
-    /* Ensures that the viewport fits within mobile dimensions */
-    body {
-        font-size: 16px;
-        margin: 0;
-        padding: 0;
-    }
+/* General styling */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    background-color: #adadad;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-    /* Header adjustments */
-    header h1 {
-        font-size: 24px;
-        text-align: center;
-    }
+/* Header styling */
+header {
+    background-color: #333;
+    color: #D3D3D3;
+    text-align: center;
+    padding: 20px;
+}
 
-    /* Menu adjustments */
+header h1 {
+    font-family: 'Vinyl George', sans-serif;
+    font-size: 36px;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+}
+
+/* Responsive menu */
+nav {
+    margin: 20px 0;
+}
+
+nav ul.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #444;
+}
+
+nav ul.menu > li {
+    display: inline-block;
+    position: relative;
+}
+
+nav ul.menu > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    background-color: #333;
+}
+
+nav ul.menu > li > a:hover {
+    background-color: #555;
+}
+
+/* Dropdown styling */
+nav ul.menu .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+}
+
+nav ul.menu .dropdown li {
+    display: block;
+}
+
+nav ul.menu .dropdown li a {
+    padding: 10px;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul.menu .dropdown li a:hover {
+    background-color: #666;
+}
+
+/* Show dropdown on hover */
+nav ul.menu li:hover .dropdown {
+    display: block;
+}
+
+/* Main section styling */
+main {
+    padding: 2em;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+main p {
+    font-size: 1em;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1em;
+}
+
+/* Footer styling */
+footer {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* Stack menu items vertically for smaller screens */
     nav ul.menu {
-        display: flex;
         flex-direction: column;
-        padding: 0;
-        margin: 0;
+        align-items: center;
     }
 
-    /* Dropdown style for better touch accessibility */
-    nav ul.menu > li {
-        position: relative;
-        padding: 10px;
-        background-color: #333;
-        color: #fff;
-    }
-
+    /* Increase touch target size for menu items */
     nav ul.menu > li > a {
-        color: white;
-        text-decoration: none;
+        padding: 1em 2em;
     }
 
+    /* Dropdown should take full width on mobile */
     nav ul.menu .dropdown {
-        display: none;
-        position: absolute;
-        background-color: #444;
-        flex-direction: column;
+        position: static;
         width: 100%;
     }
 
-    /* Toggle dropdown on click for touch compatibility */
-    nav ul.menu > li:hover .dropdown {
-        display: flex;
-    }
-
-    /* Main section adjustments */
+    /* Adjust main content padding */
     main {
-        padding: 20px;
-        text-align: center;
+        padding: 1em;
     }
 
-    /* Image scaling for smaller screens */
-    main img {
-        width: 100%;
-        height: auto;
-    }
-
-    /* Footer styling */
-    footer {
-        text-align: center;
-        font-size: 14px;
-        padding: 10px 0;
-        background-color: #333;
-        color: #fff;
+    /* Adjust header text for mobile */
+    header h1 {
+        font-size: 28px;
     }
 }
