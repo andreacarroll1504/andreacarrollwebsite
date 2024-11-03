@@ -1,0 +1,70 @@
+/* Mobile-specific styling */
+@media only screen and (max-width: 768px) {
+    /* Ensures that the viewport fits within mobile dimensions */
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header adjustments */
+    header h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    /* Menu adjustments */
+    nav ul.menu {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Dropdown style for better touch accessibility */
+    nav ul.menu > li {
+        position: relative;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+    }
+
+    nav ul.menu > li > a {
+        color: white;
+        text-decoration: none;
+    }
+
+    nav ul.menu .dropdown {
+        display: none;
+        position: absolute;
+        background-color: #444;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Toggle dropdown on click for touch compatibility */
+    nav ul.menu > li:hover .dropdown {
+        display: flex;
+    }
+
+    /* Main section adjustments */
+    main {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Image scaling for smaller screens */
+    main img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Footer styling */
+    footer {
+        text-align: center;
+        font-size: 14px;
+        padding: 10px 0;
+        background-color: #333;
+        color: #fff;
+    }
+}
