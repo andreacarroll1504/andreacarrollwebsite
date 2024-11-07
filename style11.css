@@ -57,4 +57,3 @@ input[type="checkbox"]:disabled {
   background-color: #ccc; /* Light grey background for disabled checkboxes */
   cursor: not-allowed; /* Show not-allowed cursor for disabled checkboxes */
 }
-
