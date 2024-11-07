@@ -1,12 +1,13 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
-#program-info {
-  margin: 20px;
+h1 {
+  text-align: center;
+  color: #333;
 }
 
-#course-list {
+#program-info, #course-list, #specializations, #sample-program {
   margin: 20px;
 }
 
@@ -18,3 +19,8 @@ label {
   margin-left: 5px;
 }
 
+#total-credits {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4CAF50;
+}
