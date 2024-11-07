@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const courseData = { "courses.json" };
-  
+  const courseData = fetch("courses.json")
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+
   const completedCourses = new Set(); // Set to track completed courses
   const completedSelect = document.getElementById("completedSelect");
   const coursesList = document.getElementById("coursesList");
@@ -22,38 +26,37 @@ document.addEventListener("DOMContentLoaded", () => {
     // Iterate through all courses and check if prerequisites are met
     courseData.programSpecificCourses.forEach(course => {
       const prerequisitesMet = course.prerequisites.every(prerequisite => completedCourses.has(prerequisite));
-
-      const div = document.createElement("div");
-      div.classList.add("course");
-
-      const courseLabel = document.createElement("label");
-      courseLabel.textContent = `${course.courseCode} - ${course.courseName}`;
       
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.value = course.courseCode;
-      checkbox.disabled = !prerequisitesMet; // Disable checkbox if prerequisites are not met
-      checkbox.classList.add('course-checkbox');
-      
-      // Change the checkbox appearance when checked
-      checkbox.addEventListener("change", () => {
-        if (checkbox.checked) {
-          completedCourses.add(course.courseCode);
-        } else {
-          completedCourses.delete(course.courseCode);
+      if (prerequisitesMet) {
+        const div = document.createElement("div");
+        div.classList.add("course");
+
+        const courseLabel = document.createElement("label");
+        courseLabel.textContent = `${course.courseCode} - ${course.courseName}`;
+        
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = course.courseCode;
+        checkbox.disabled = !prerequisitesMet; // Disable checkbox if prerequisites are not met
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            completedCourses.add(course.courseCode);
+          } else {
+            completedCourses.delete(course.courseCode);
+          }
+          updateAvailableCourses();
+        });
+
+        div.appendChild(courseLabel);
+        div.appendChild(checkbox);
+        coursesList.appendChild(div);
+
+        // Add advising notes if the course has "OR" prerequisites
+        if (course.prerequisites.length > 1) {
+          const note = document.createElement("p");
+          note.textContent = `Note: Choose one of the following prerequisites: ${course.prerequisites.join(" or ")}`;
+          notesDiv.appendChild(note);
         }
-        updateAvailableCourses();
-      });
-
-      div.appendChild(courseLabel);
-      div.appendChild(checkbox);
-      coursesList.appendChild(div);
-
-      // Add advising notes if the course has "OR" prerequisites
-      if (course.prerequisites.length > 1) {
-        const note = document.createElement("p");
-        note.textContent = `Note: Choose one of the following prerequisites: ${course.prerequisites.join(" or ")}`;
-        notesDiv.appendChild(note);
       }
     });
   }
