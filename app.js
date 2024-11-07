@@ -1,126 +1,90 @@
-fetch('courses.json')
-  .then(response => response.json())
-  .then(data => {
-    const programData = data;
-    const selectedCourses = [];
+document.addEventListener('DOMContentLoaded', function () {
+    let totalCredits = 0;  // Track total credits selected by the user
 
-    // Displaying Program Credit Requirements
-    function displayProgramInfo() {
-      const programInfoDiv = document.getElementById('program-info');
-      const programCreditHTML = `
-        <h2>Program Credit Requirements</h2>
-        <ul>
-          <li>Technical Electives: ${programData.program_credit_requirements.technical_electives} credits</li>
-          <li>General Education Requirements: ${programData.program_credit_requirements.general_education} credits</li>
-          <li>Program Specific Courses: ${programData.program_credit_requirements.program_specific_courses} credits</li>
-          <li><strong>Total Credits: ${programData.program_credit_requirements.total_credits}</strong></li>
-        </ul>
-        <p><strong>Note:</strong> ${programData.program_credit_requirements.note}</p>
-      `;
-      programInfoDiv.innerHTML = programCreditHTML;
-    }
-
-    // Displaying Courses
-    function displayCourses() {
-      const courseListDiv = document.getElementById('course-list');
-      programData.program_specific_courses.forEach(course => {
-        const courseItem = document.createElement('div');
-        courseItem.classList.add('course-item');
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = course.course_id;
-        checkbox.value = course.course_id;
-
-        const label = document.createElement('label');
-        label.setAttribute('for', course.course_id);
-        label.textContent = `${course.course_id}: ${course.course_name} (${course.credits} credits)`;
-
-        checkbox.addEventListener('change', function() {
-          if (checkbox.checked) {
-            selectedCourses.push(course.course_id);
-          } else {
-            const index = selectedCourses.indexOf(course.course_id);
-            if (index > -1) {
-              selectedCourses.splice(index, 1);
-            }
-          }
-          updateCreditTotal();
+    fetch('courses.json')
+        .then(response => response.json())
+        .then(data => {
+            loadCourses(data.courses);
+            loadSpecializations(data.specializations);
+            displayProgramRequirements(data.programRequirements);
         });
 
-        courseItem.appendChild(checkbox);
-        courseItem.appendChild(label);
-        courseListDiv.appendChild(courseItem);
-      });
+    function loadCourses(courses) {
+        let courseContainer = document.getElementById('course-list');
+        courses.forEach(course => {
+            let courseDiv = document.createElement('div');
+            let checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = course.id;
+            checkbox.dataset.prereqs = JSON.stringify(course.prerequisites);
+            checkbox.dataset.credits = course.credits;
+            let label = document.createElement('label');
+            label.setAttribute('for', course.id);
+            label.textContent = `${course.name} (${course.credits} credits)`;
+
+            courseDiv.appendChild(checkbox);
+            courseDiv.appendChild(label);
+            courseContainer.appendChild(courseDiv);
+
+            checkbox.addEventListener('change', function () {
+                updateTotalCredits(course.credits, checkbox.checked);
+                displayPrerequisites(course.id);
+            });
+        });
     }
 
-    // Displaying Specializations
-    function displaySpecializations() {
-      const specializationDiv = document.getElementById('specializations');
-      const webSystems = programData.specializations.web_systems_programming;
-      const cybersecurity = programData.specializations.cybersecurity_and_cyberforensics;
+    function loadSpecializations(specializations) {
+        let specializationContainer = document.getElementById('specializations');
+        specializations.forEach(spec => {
+            let specDiv = document.createElement('div');
+            let title = document.createElement('h3');
+            title.textContent = spec.name;
+            specDiv.appendChild(title);
 
-      let specializationHTML = `<h2>Specializations</h2><h3>Web Systems Programming</h3><ul>`;
-      webSystems.forEach(course => {
-        specializationHTML += `<li>${course.course_id}: ${course.course_name} (${course.credits} credits)</li>`;
-      });
-      specializationHTML += `</ul><h3>Cybersecurity and Cyberforensics</h3><ul>`;
-      cybersecurity.forEach(course => {
-        specializationHTML += `<li>${course.course_id}: ${course.course_name} (${course.credits} credits)</li>`;
-      });
-      specializationHTML += `</ul>`;
-      specializationDiv.innerHTML = specializationHTML;
+            spec.courses.forEach(course => {
+                let specCourse = document.createElement('p');
+                specCourse.textContent = `${course.name} (${course.credits} credits)`;
+                specDiv.appendChild(specCourse);
+            });
+
+            specializationContainer.appendChild(specDiv);
+        });
     }
 
-    // Displaying Sample Program of Study
-    function displaySampleProgram() {
-      const sampleDiv = document.getElementById('sample-program');
-      const sampleHTML = `
-        <h2>Sample Program of Study</h2>
-        <div id="semester-1">
-          <h3>Semester 1</h3>
-          <ul>
-            ${programData.sample_program_of_study.semester_1.map(course => `
-              <li>${course.course_id}: ${course.course_name} (${course.credits} credits)</li>
-            `).join('')}
-          </ul>
-        </div>
-        <div id="semester-2">
-          <h3>Semester 2</h3>
-          <ul>
-            ${programData.sample_program_of_study.semester_2.map(course => `
-              <li>${course.course_id}: ${course.course_name} (${course.credits} credits)</li>
-            `).join('')}
-          </ul>
-        </div>
-        <div id="semester-3">
-          <h3>Semester 3</h3>
-          <ul>
-            ${programData.sample_program_of_study.semester_3.map(course => `
-              <li>${course.course_id}: ${course.course_name} (${course.credits} credits)</li>
-            `).join('')}
-          </ul>
-        </div>
-      `;
-      sampleDiv.innerHTML = sampleHTML;
+    function displayProgramRequirements(requirements) {
+        let requirementsContainer = document.getElementById('program-requirements');
+        requirementsContainer.innerHTML = `
+            <p>Total Technical Electives: ${requirements.technicalElectives}</p>
+            <p>Total General Education: ${requirements.generalEducation}</p>
+            <p>Total Program Specific Courses: ${requirements.programSpecificCourses}</p>
+            <p>Total Credits Required: ${requirements.totalCredits}</p>
+        `;
     }
 
-    // Update Total Credits Selected
-    function updateCreditTotal() {
-      let totalCredits = 0;
-      selectedCourses.forEach(courseId => {
-        const course = programData.program_specific_courses.find(c => c.course_id === courseId);
-        if (course) {
-          totalCredits += course.credits;
+    function updateTotalCredits(courseCredits, isChecked) {
+        if (isChecked) {
+            totalCredits += courseCredits;
+        } else {
+            totalCredits -= courseCredits;
         }
-      });
-      document.getElementById('total-credits').textContent = `Total Credits Selected: ${totalCredits}`;
+        document.getElementById('total-credits').textContent = `Total Credits Selected: ${totalCredits}`;
     }
 
-    displayProgramInfo();
-    displayCourses();
-    displaySpecializations();
-    displaySampleProgram();
-  })
-  .catch(error => {
-    console.error('Error loading course data:', error);
-  });
+    function displayPrerequisites(courseId) {
+        let course = document.getElementById(courseId);
+        let prereqs = JSON.parse(course.dataset.prereqs);
+        if (prereqs.length > 0) {
+            alert(`Prerequisites for ${courseId}: ${prereqs.join(', ')}`);
+        } else {
+            alert(`No prerequisites for ${courseId}`);
+        }
+    }
+
+    // Add the resetSelection function here to reset selections
+    window.resetSelection = function () {
+        let checkboxes = document.querySelectorAll('#course-list input[type="checkbox"]');
+        checkboxes.forEach(checkbox => checkbox.checked = false);
+        totalCredits = 0;
+        document.getElementById('total-credits').textContent = `Total Credits Selected: ${totalCredits}`;
+    };
+});
