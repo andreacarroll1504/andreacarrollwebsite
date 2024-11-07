@@ -3,17 +3,18 @@ body {
 }
 
 #program-info {
-  margin-bottom: 20px;
+  margin: 20px;
+}
+
+#course-list {
+  margin: 20px;
 }
 
 .course-item {
   margin-bottom: 10px;
 }
 
-.course-item label {
+label {
   margin-left: 5px;
 }
 
-input[type="checkbox"]:disabled + label {
-  color: grey;
-}
