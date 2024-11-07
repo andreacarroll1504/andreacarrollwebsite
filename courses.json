@@ -1,28 +1,74 @@
 {
   "programSpecificCourses": [
-    {"courseCode": "COP3530", "courseName": "Data Structures", "credits": 3, "prerequisites": []},
-    {"courseCode": "COP4610", "courseName": "Operating Systems", "credits": 3, "prerequisites": []},
-    {"courseCode": "CNT3104", "courseName": "Introduction to Telecommunications", "credits": 2, "prerequisites": []},
-    {"courseCode": "CIS4250", "courseName": "Ethical Issues in IT", "credits": 1, "prerequisites": []},
-    {"courseCode": "CNT4007", "courseName": "Data and Computer Communications", "credits": 3, "prerequisites": ["COP4610"]},
-    {"courseCode": "CIS4360", "courseName": "Applied Cybersecurity", "credits": 3, "prerequisites": ["COP3530"]},
-    {"courseCode": "COP4813", "courseName": "Web Systems I", "credits": 3, "prerequisites": []},
-    {"courseCode": "CDA4101", "courseName": "Computer Organization and Design", "credits": 3, "prerequisites": []},
-    {"courseCode": "CNT4703", "courseName": "Voice and Data Network Design", "credits": 3, "prerequisites": ["CNT4007"]},
-    {"courseCode": "COP4708", "courseName": "Applied Database I", "credits": 3, "prerequisites": ["COP3530"]},
-    {"courseCode": "CEN4010", "courseName": "Software Engineering", "credits": 3, "prerequisites": []},
-    {"courseCode": "CEN4801", "courseName": "Systems Integration", "credits": 3, "prerequisites": []},
-    {"courseCode": "CEN3722", "courseName": "Human Computer Interfaces", "credits": 3, "prerequisites": []},
-    {"courseCode": "CIS4510", "courseName": "IT Project Management", "credits": 3, "prerequisites": []}
-  ],
-  "electives": {
-    "Web Systems Programming": [
-      {"courseCode": "COP4709", "courseName": "Applied Database II", "credits": 3, "prerequisites": ["COP4708"]},
-      {"courseCode": "COP4834", "courseName": "Web Systems II", "credits": 3, "prerequisites": ["COP4813"]}
-    ],
-    "Cybersecurity and Cyberforensics": [
-      {"courseCode": "CET4860", "courseName": "Introduction to Digital Forensics", "credits": 3, "prerequisites": []},
-      {"courseCode": "CET4861", "courseName": "Advanced Digital Forensics", "credits": 3, "prerequisites": ["CET4860"]}
-    ]
-  }
+    {
+      "courseCode": "COP3530",
+      "courseName": "Data Structures",
+      "prerequisites": []
+    },
+    {
+      "courseCode": "COP4610",
+      "courseName": "Operating Systems",
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CNT3104",
+      "courseName": "Introduction to Telecommunications",
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CIS4250",
+      "courseName": "Ethical Issues in IT",
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CNT4007",
+      "courseName": "Data and Computer Communications",
+      "prerequisites": ["COP3530"]
+    },
+    {
+      "courseCode": "CIS4360",
+      "courseName": "Applied Cybersecurity",
+      "prerequisites": ["COP3530", "COP4610"]
+    },
+    {
+      "courseCode": "COP4813",
+      "courseName": "Web Systems I",
+      "prerequisites": ["COP3530", "CIS4360"]
+    },
+    {
+      "courseCode": "CDA4101",
+      "courseName": "Computer Organization and Design",
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CNT4703",
+      "courseName": "Voice and Data Network Design",
+      "prerequisites": ["COP3530"]
+    },
+    {
+      "courseCode": "COP4708",
+      "courseName": "Applied Database I",
+      "prerequisites": ["COP3530"]
+    },
+    {
+      "courseCode": "CEN4010",
+      "courseName": "Software Engineering",
+      "prerequisites": ["COP3530"]
+    },
+    {
+      "courseCode": "CEN4801",
+      "courseName": "Systems Integration",
+      "prerequisites": ["COP3530", "CEN4010"]
+    },
+    {
+      "courseCode": "CEN3722",
+      "courseName": "Human Computer Interfaces",
+      "prerequisites": []
+    },
+    {
+      "courseCode": "CIS4510",
+      "courseName": "IT Project Management",
+      "prerequisites": []
+    }
+  ]
 }
