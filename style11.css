@@ -1,4 +1,3 @@
-/* Global styles */
 body {
   font-family: Arial, sans-serif;
 }
@@ -16,13 +15,35 @@ h1 {
   height: 150px;
 }
 
-/* Course list and checkbox styles */
 .course {
   margin: 10px 0;
 }
 
 label {
   margin-right: 10px;
+}
+
+/* Style for buttons */
+.button-container {
+  margin-top: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #555; /* Dark background for the button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #666;
 }
 
 /* Ensure that the checked checkbox has a black checkmark */
@@ -35,11 +56,5 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:disabled {
   background-color: #ccc; /* Light grey background for disabled checkboxes */
   cursor: not-allowed; /* Show not-allowed cursor for disabled checkboxes */
-}
-
-/* Advising notes styles */
-#notes {
-  margin-top: 20px;
-  color: red;
 }
 
