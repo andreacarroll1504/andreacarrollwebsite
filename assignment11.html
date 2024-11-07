@@ -9,27 +9,56 @@
   <style>
     body {
         font-family: Helvetica, sans-serif;
-        background-color: #333; /* Dark background for contrast */
-        color: #fff; /* White text coloring */
+        background-color: #333;
+        color: #fff;
     }
+
     .button-container {
         margin-top: 20px;
     }
+
     .button {
         padding: 10px 20px;
         font-size: 16px;
         color: #fff;
-        background-color: #555; /* Dark background for the buttons */
+        background-color: #555;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-right: 10px; /* Adds space between the buttons */
+        margin-right: 10px;
         text-decoration: none;
         display: inline-block;
         text-align: center;
     }
+
     .button:hover {
         background-color: #666;
+    }
+
+    /* Add blur effect for unchecked courses */
+    .course {
+        filter: blur(3px);
+        transition: filter 0.3s ease;
+    }
+
+    .course.checked {
+        filter: none;  /* Remove blur on checked course */
+    }
+
+    /* Add styling for checked checkboxes */
+    .course input:checked + label::before {
+        content: '✔';  /* Adds a checkmark symbol */
+        color: black;  /* Make the checkmark black */
+        margin-right: 10px;
+    }
+
+    /* Styling for checkboxes */
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    label {
+        cursor: pointer;
     }
   </style>
 </head>
@@ -60,5 +89,4 @@
   <script src="app.js"></script>
 </body>
 </html>
-
 
