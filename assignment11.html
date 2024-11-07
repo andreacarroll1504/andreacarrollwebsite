@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSIT Program Overview</title>
+    <title>BSIT Class Advisor</title>
     <link rel="stylesheet" href="style11.css">
 </head>
 <body>
-    <h1>BSIT Program Overview</h1>
+    <h1>BSIT Class Advisor</h1>
+    <div id="program-requirements">
+        <!-- Program requirements will be displayed here -->
+    </div>
 
-    <!-- Program Information -->
-    <div id="program-info"></div>
+    <div id="course-list">
+        <!-- Course checkboxes will be dynamically generated here -->
+    </div>
 
-    <!-- Courses -->
-    <div id="course-list"></div>
+    <!-- Reset Button -->
+    <button class="button" onclick="resetSelection()">Reset Selections</button>
 
-    <!-- Specializations -->
-    <div id="specializations"></div>
+    <div id="specializations">
+        <!-- Specializations will be displayed here -->
+    </div>
 
-    <!-- Sample Program of Study -->
-    <div id="sample-program"></div>
-
-    <!-- Total Credits -->
-    <div id="total-credits"></div>
+    <div id="total-credits">
+        <!-- Total credits selected will be displayed here -->
+        Total Credits Selected: 0
+    </div>
 
     <script src="app.js"></script>
 </body>
 </html>
-
-
