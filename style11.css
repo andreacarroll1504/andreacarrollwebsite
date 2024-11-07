@@ -1,3 +1,4 @@
+/* Global styles */
 body {
   font-family: Arial, sans-serif;
 }
@@ -15,11 +16,30 @@ h1 {
   height: 150px;
 }
 
+/* Course list and checkbox styles */
 .course {
   margin: 10px 0;
 }
 
+label {
+  margin-right: 10px;
+}
+
+/* Ensure that the checked checkbox has a black checkmark */
+input[type="checkbox"]:checked {
+  background-color: black; /* Black background for checked checkbox */
+  color: white; /* White checkmark */
+}
+
+/* Style the greyed-out checkboxes when prerequisites are not met */
+input[type="checkbox"]:disabled {
+  background-color: #ccc; /* Light grey background for disabled checkboxes */
+  cursor: not-allowed; /* Show not-allowed cursor for disabled checkboxes */
+}
+
+/* Advising notes styles */
 #notes {
   margin-top: 20px;
   color: red;
 }
+
