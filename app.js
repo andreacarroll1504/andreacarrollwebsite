@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const courseData = { "courses.json" };
-
+  
   const completedCourses = new Set(); // Set to track completed courses
   const completedSelect = document.getElementById("completedSelect");
   const coursesList = document.getElementById("coursesList");
@@ -22,14 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Iterate through all courses and check if prerequisites are met
     courseData.programSpecificCourses.forEach(course => {
       const prerequisitesMet = course.prerequisites.every(prerequisite => completedCourses.has(prerequisite));
-      
+
       const div = document.createElement("div");
       div.classList.add("course");
-
-      // Add blur effect for unchecked courses
-      if (!prerequisitesMet) {
-        div.classList.add("blurred"); // Apply blur if prerequisites are not met
-      }
 
       const courseLabel = document.createElement("label");
       courseLabel.textContent = `${course.courseCode} - ${course.courseName}`;
@@ -37,18 +32,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.value = course.courseCode;
+      checkbox.disabled = !prerequisitesMet; // Disable checkbox if prerequisites are not met
+      checkbox.classList.add('course-checkbox');
+      
+      // Change the checkbox appearance when checked
       checkbox.addEventListener("change", () => {
         if (checkbox.checked) {
           completedCourses.add(course.courseCode);
-          div.classList.add("checked");  // Remove blur and mark as checked
         } else {
           completedCourses.delete(course.courseCode);
-          div.classList.remove("checked");  // Re-apply blur if unchecked
         }
+        updateAvailableCourses();
       });
 
-      div.appendChild(checkbox);
       div.appendChild(courseLabel);
+      div.appendChild(checkbox);
       coursesList.appendChild(div);
 
       // Add advising notes if the course has "OR" prerequisites
