@@ -8,127 +8,127 @@
   "courses": [
     {
       "id": "COP3530",
-      "name": "Data Structures",
+      "name": "COP3530 Data Structures",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "COP4610",
-      "name": "Operating Systems",
+      "name": "COP4610 Operating Systems",
       "credits": 3,
       "prerequisites": ["COP3530"]
     },
     {
       "id": "CNT3104",
-      "name": "Introduction to Telecommunications",
+      "name": "CNT3104 Introduction to Telecommunications",
       "credits": 2,
       "prerequisites": []
     },
     {
       "id": "CIS4250",
-      "name": "Ethical Issues in IT",
+      "name": "CIS4250 Ethical Issues in IT",
       "credits": 1,
       "prerequisites": []
     },
     {
       "id": "CNT4007",
-      "name": "Data and Computer Communications",
+      "name": "CNT4007 Data and Computer Communications",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CIS4360",
-      "name": "Applied Cybersecurity",
+      "name": "CIS4360 Applied Cybersecurity",
       "credits": 3,
       "prerequisites": ["COP3530"]
     },
     {
       "id": "COP4813",
-      "name": "Web Systems I",
+      "name": "COP4813 Web Systems I",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CDA4101",
-      "name": "Computer Organization and Design",
+      "name": "CDA4101 Computer Organization and Design",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CNT4703",
-      "name": "Voice and Data Network Design",
+      "name": "CNT4703 Voice and Data Network Design",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "COP4708",
-      "name": "Applied Database I",
+      "name": "COP4708 Applied Database I",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CEN4010",
-      "name": "Software Engineering",
+      "name": "CEN4010 Software Engineering",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CEN4801",
-      "name": "Systems Integration",
+      "name": "CEN4801 Systems Integration",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CEN3722",
-      "name": "Human Computer Interfaces",
+      "name": "CEN3722 Human Computer Interfaces",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CIS4510",
-      "name": "IT Project Management",
+      "name": "CIS4510 IT Project Management",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "GEB3213",
-      "name": "Business Writing",
+      "name": "GEB3213 Business Writing",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "COP4709",
-      "name": "Applied Database II",
+      "name": "COP4709 Applied Database II",
       "credits": 3,
       "prerequisites": ["COP4708"]
     },
     {
       "id": "COP4834",
-      "name": "Web Systems II",
+      "name": "COP4834 Web Systems II",
       "credits": 3,
       "prerequisites": ["COP4813"]
     },
     {
       "id": "CET4860",
-      "name": "Introduction to Digital Forensics",
+      "name": "CET4860 Introduction to Digital Forensics",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CET4861",
-      "name": "Advanced Digital Forensics",
+      "name": "CET4861 Advanced Digital Forensics",
       "credits": 3,
       "prerequisites": ["CET4860"]
     },
     {
       "id": "CET4862",
-      "name": "Network Forensics and Incident Response",
+      "name": "CET4862 Network Forensics and Incident Response",
       "credits": 3,
       "prerequisites": []
     },
     {
       "id": "CET4884",
-      "name": "Security Methods and Practice",
+      "name": "CET4884 Security Methods and Practice",
       "credits": 3,
       "prerequisites": []
     }
@@ -137,15 +137,15 @@
     {
       "name": "Web Systems Programming",
       "courses": [
-        { "id": "COP4709", "name": "Applied Database II", "credits": 3 },
-        { "id": "COP4834", "name": "Web Systems II", "credits": 3 }
+        { "id": "COP4709", "name": "COP4709 Applied Database II", "credits": 3 },
+        { "id": "COP4834", "name": "COP4834 Web Systems II", "credits": 3 }
       ]
     },
     {
       "name": "Cybersecurity and Cyberforensics",
       "courses": [
-        { "id": "CET4860", "name": "Introduction to Digital Forensics", "credits": 3 },
-        { "id": "CET4861", "name": "Advanced Digital Forensics", "credits": 3 }
+        { "id": "CET4860", "name": "CET4860 Introduction to Digital Forensics", "credits": 3 },
+        { "id": "CET4861", "name": "CET4861 Advanced Digital Forensics", "credits": 3 }
       ]
     }
   ]
