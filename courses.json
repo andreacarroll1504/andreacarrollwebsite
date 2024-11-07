@@ -1,75 +1,44 @@
 {
-  "programSpecificCourses": [
-    {
-      "courseCode": "COP3530",
-      "courseName": "Data Structures",
-      "prerequisites": []
+  "program_credit_requirements": {
+    "technical_electives": 44,
+    "general_education": 36,
+    "program_specific_courses": 48,
+    "total_credits": 128
+  },
+  "program_specific_courses": [
+    { "course_id": "COP3530", "course_name": "Data Structures", "credits": 3, "prerequisites": [] },
+    { "course_id": "COP4610", "course_name": "Operating Systems", "credits": 3, "prerequisites": [] },
+    { "course_id": "CNT3104", "course_name": "Introduction to Telecommunications", "credits": 2, "prerequisites": [] },
+    { "course_id": "CIS4250", "course_name": "Ethical Issues in IT", "credits": 1, "prerequisites": [] },
+    { "course_id": "CNT4007", "course_name": "Data and Computer Communications", "credits": 3, "prerequisites": [] },
+    { "course_id": "CIS4360", "course_name": "Applied Cybersecurity", "credits": 3, "prerequisites": [] },
+    { "course_id": "COP4813", "course_name": "Web Systems I", "credits": 3, "prerequisites": [] },
+    { "course_id": "CDA4101", "course_name": "Computer Organization and Design", "credits": 3, "prerequisites": [] },
+    { "course_id": "CNT4703", "course_name": "Voice and Data Network Design", "credits": 3, "prerequisites": [] },
+    { "course_id": "COP4708", "course_name": "Applied Database I", "credits": 3, "prerequisites": [] },
+    { "course_id": "CEN4010", "course_name": "Software Engineering", "credits": 3, "prerequisites": [] },
+    { "course_id": "CEN4801", "course_name": "Systems Integration", "credits": 3, "prerequisites": [] },
+    { "course_id": "CEN3722", "course_name": "Human Computer Interfaces", "credits": 3, "prerequisites": [] },
+    { "course_id": "CIS4510", "course_name": "IT Project Management", "credits": 3, "prerequisites": [] }
+  ],
+  "specializations": {
+    "web_systems_programming": {
+      "courses": [
+        { "course_id": "COP4709", "course_name": "Applied Database II", "credits": 3 },
+        { "course_id": "COP4834", "course_name": "Web Systems II", "credits": 3 }
+      ]
     },
-    {
-      "courseCode": "COP4610",
-      "courseName": "Operating Systems",
-      "prerequisites": []
-    },
-    {
-      "courseCode": "CNT3104",
-      "courseName": "Introduction to Telecommunications",
-      "prerequisites": []
-    },
-    {
-      "courseCode": "CIS4250",
-      "courseName": "Ethical Issues in IT",
-      "prerequisites": []
-    },
-    {
-      "courseCode": "CNT4007",
-      "courseName": "Data and Computer Communications",
-      "prerequisites": ["COP3530"]
-    },
-    {
-      "courseCode": "CIS4360",
-      "courseName": "Applied Cybersecurity",
-      "prerequisites": ["COP3530", "COP4610"]
-    },
-    {
-      "courseCode": "COP4813",
-      "courseName": "Web Systems I",
-      "prerequisites": ["COP3530", "CIS4360"]
-    },
-    {
-      "courseCode": "CDA4101",
-      "courseName": "Computer Organization and Design",
-      "prerequisites": []
-    },
-    {
-      "courseCode": "CNT4703",
-      "courseName": "Voice and Data Network Design",
-      "prerequisites": ["COP3530"]
-    },
-    {
-      "courseCode": "COP4708",
-      "courseName": "Applied Database I",
-      "prerequisites": ["COP3530"]
-    },
-    {
-      "courseCode": "CEN4010",
-      "courseName": "Software Engineering",
-      "prerequisites": ["COP3530"]
-    },
-    {
-      "courseCode": "CEN4801",
-      "courseName": "Systems Integration",
-      "prerequisites": ["COP3530", "CEN4010"]
-    },
-    {
-      "courseCode": "CEN3722",
-      "courseName": "Human Computer Interfaces",
-      "prerequisites": []
-    },
-    {
-      "courseCode": "CIS4510",
-      "courseName": "IT Project Management",
-      "prerequisites": []
+    "cybersecurity_and_cyberforensics": {
+      "courses": [
+        { "course_id": "CET4860", "course_name": "Introduction to Digital Forensics", "credits": 3 },
+        { "course_id": "CET4861", "course_name": "Advanced Digital Forensics", "credits": 3 },
+        { "course_id": "CET4862", "course_name": "Network Forensics and Incident Response", "credits": 3 },
+        { "course_id": "CET4884", "course_name": "Security Methods and Practice", "credits": 3 }
+      ]
     }
+  },
+  "technical_writing": [
+    { "course_id": "GEB3213", "course_name": "Business Writing", "credits": 3 }
   ]
 }
 
