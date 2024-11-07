@@ -7,6 +7,30 @@
   <link rel="stylesheet" href="style11.css">
 </head>
 <body>
+   body {
+            font-family: Helvetica, sans-serif;
+            background-color: #333; /* Dark background for contrast */
+            color: #fff; /* White text coloring */
+        }
+   .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #555; /* I added a dark background for the buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* I added space between the buttons */
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #666;
+        }
   <h1>BSIT Class Advising Tool</h1>
   
   <!-- Go Back Button -->
@@ -24,6 +48,7 @@
 
   <div id="advisingNotes">
     <h3>Advising Notes</h3>
+    <p>Sequence of courses may vary. Check catalog course descriptions for requisite requirements.</p>
     <div id="notes"></div>
   </div>
 
