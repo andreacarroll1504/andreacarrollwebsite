@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#completedCourses, #availableCourses, #advisingNotes {
+  margin: 20px;
+}
+
+#completedSelect {
+  width: 100%;
+  height: 150px;
+}
+
+.course {
+  margin: 10px 0;
+}
+
+#notes {
+  margin-top: 20px;
+  color: red;
+}
