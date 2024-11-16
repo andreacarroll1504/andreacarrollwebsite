@@ -12,31 +12,31 @@
         "Produced/Sold by": "Open Source",
         "Technology Base": "PHP, MySQL, HTML, CSS, JavaScript",
         "Major Capabilities": "Corresponds with all browsers, Stress-free installation, Straightforward editing ",
-        "Major Limitations": " Little SEO, Too full to load and manage, Plugins and modules hidden behind a paywall, ",
+        "Major Limitations": " Little SEO, Too full to load and manage, Plugins and modules are hidden behind a paywall ",
         "Example Site": "https://www.holidayinn.com/"
     },
     {
         "System": "Drupal",
         "Produced/Sold by": "Open Source",
         "Technology Base": "PHP, MySQL, HTML5, YAML",
-        "Major Capabilities": "Content management, Adaptable integration, Straightforward, ",
-        "Major Limitations": "Difficult to learn, SQL injection, More than 10 resources needed for each page,",
+        "Major Capabilities": "Content management, Adaptable integration, Straightforward ",
+        "Major Limitations": "Difficult to learn, SQL injection, More than 10 resources needed for each page",
         "Example Site": "https://ew.com/"
     },
     {
         "System": "Shopify",
-        "Produced/Sold by": "Paid, Cloud-based SaaS",
+        "Produced/Sold by": "Proprietary, cloud-based",
         "Technology Base": "Ruby on Rails, Cloud hosting",
-        "Major Capabilities": "Recommended for eCommerce, Helps several sales channels, Mobile-friendly, Unified payment opening,",
+        "Major Capabilities": "Recommended for eCommerce, Helps several sales channels, Mobile-friendly, Unified payment opening",
         "Major Limitations": "Restricted customization options, Transactions fees apply, High monthly subscription costs",
         "Example Site": "https://jeffreestarcosmetics.com/"
     },
     {
         "System": "Wix",
         "Produced/Sold by": "Open Source",
-        "Technology Base": "React, Cloud Infrastructure, APIs",
+        "Technology Base": "React, Cloud hosting, APIs",
         "Major Capabilities": "Progressive SEO, Plentiful apps and integrations, Recommended for E-commerce",
-        "Major Limitations": "All features hidden within a paywall, Diminished loading speeds, Templates cannot be exchanged, ",
+        "Major Limitations": "All features hidden within a paywall, Diminished loading speeds, Templates cannot be exchanged ",
         "Example Site": "https://adidas.com/"
     }
 ]
