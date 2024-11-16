@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Comparison Table</title>
+    <style>
+          body {
+            font-family: Helvetica, sans-serif;
+            background-color: #333; /* Dark background for contrast */
+            color: #fff; /* White text coloring */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Added some space above the table */
+        }
+        table, th, td {
+            border: 1px solid white; /* White border for table */
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #444; /* Makes slightly lighter background for header */
+        }
+        .button {
+            background-color: #555; /* My Button background color */
+            color: white; /* My Button text color */
+            border: none; /* Removed the border */
+            padding: 10px 20px; /* Added Padding for the button */
+            text-align: center; /* Centered the text */
+            text-decoration: none; /* Removed underline */
+            display: inline-block; /* Displayed as an inline-block */
+            margin: 10px 0; /* Added Margin for spacing */
+            cursor: pointer; /* Changed the cursor to pointer on hover */
+            border-radius: 5px; /* Rounded my corners */
+        }
+        .button:hover {
+            background-color: #666; /* Darkened the button on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>CMS Comparison Table</h1>
+	 <!-- Go Back Button -->
+    <a href="index.html" class="button">Go Back</a>
+    <table id="cms-table">
+        <thead>
+            <tr>
+                <th>System</th>
+                <th>Produced/Sold by</th>
+                <th>Technology Base</th>
+                <th>Major Capabilities</th>
+                <th>Major Limitations</th>
+                <th>Example Site</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        fetch('cms_data.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector('#cms-table tbody');
+                data.forEach(cms => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${cms.System}</td>
+                        <td>${cms["Produced/Sold by"]}</td>
+                        <td>${cms["Technology Base"]}</td>
+                        <td>${cms["Major Capabilities"]}</td>
+                        <td>${cms["Major Limitations"]}</td>
+                        <td><a href="${cms["Example Site"]}" target="_blank">${cms["Example Site"]}</a></td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching JSON data:', error));
+    </script>
+</body>
+</html>
