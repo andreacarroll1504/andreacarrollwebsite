@@ -4,39 +4,39 @@
         "Produced/Sold by": "Open source, sold by most companies",
         "Technology Base": "PHP, MySQL",
         "Major Capabilities": "Supports themes, Supports plugins, Public API",
-        "Major Limitations": "Security (plugins), Security (updates)",
+        "Major Limitations": "Security (needs plugins), Security (needs updates)",
         "Example Site": "https://www.nytimes.com/"
     },
     {
         "System": "Joomla",
         "Produced/Sold by": "Open Source",
         "Technology Base": "PHP, MySQL, HTML, CSS, JavaScript",
-        "Major Capabilities": "Corresponding with all browsers, Stress-free installation, Straightforward editing",
-        "Major Limitations": "Plugins and modules behind paywall, Little SEO, Too full to load and run",
+        "Major Capabilities": "Corresponds with all browsers, Stress-free installation, Straightforward editing ",
+        "Major Limitations": " Little SEO, Too full to load and manage, Plugins and modules hidden behind a paywall, ",
         "Example Site": "https://www.holidayinn.com/"
     },
     {
         "System": "Drupal",
         "Produced/Sold by": "Open Source",
         "Technology Base": "PHP, MySQL, HTML5, YAML",
-        "Major Capabilities": "Content management, Straightforward, Adaptable integration",
-        "Major Limitations": "Difficult to learn, More than 10 resources for each page, SQL injection",
+        "Major Capabilities": "Content management, Adaptable integration, Straightforward, ",
+        "Major Limitations": "Difficult to learn, SQL injection, More than 10 resources needed for each page,",
         "Example Site": "https://ew.com/"
     },
     {
         "System": "Shopify",
         "Produced/Sold by": "Paid, Cloud-based SaaS",
         "Technology Base": "Ruby on Rails, Cloud hosting",
-        "Major Capabilities": "Recommended for eCommerce, Unified payment opening, Mobile-friendly, Helps several sales channels",
-        "Major Limitations": "Transaction fees unless using Shopify Payments, Restricted customization options, High monthly subscription costs",
+        "Major Capabilities": "Recommended for eCommerce, Helps several sales channels, Mobile-friendly, Unified payment opening,",
+        "Major Limitations": "Restricted customization options, Transactions fees apply, High monthly subscription costs",
         "Example Site": "https://jeffreestarcosmetics.com/"
     },
     {
         "System": "Wix",
         "Produced/Sold by": "Open Source",
         "Technology Base": "React, Cloud Infrastructure, APIs",
-        "Major Capabilities": "Plentiful apps and integrations, Progressive SEO, E-commerce",
-        "Major Limitations": "All features hidden within paywall, Templates cannot be exchanged, Diminished loading speeds",
+        "Major Capabilities": "Progressive SEO, Plentiful apps and integrations, Recommended for E-commerce",
+        "Major Limitations": "All features hidden within a paywall, Diminished loading speeds, Templates cannot be exchanged, ",
         "Example Site": "https://adidas.com/"
     }
 ]
